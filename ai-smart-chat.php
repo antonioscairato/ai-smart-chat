@@ -3,6 +3,8 @@
  * Plugin Name:       AI Smart Chat
  * Description:       AI-powered search chatbot (RAG) for your site: answers visitors' questions from your published content and cites the sources.
  * Version:           1.3.5
+ * Author: Antonio Scairato
+ * Author URI: https://github.com/antonioscairato
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * License:           GPL-2.0-or-later

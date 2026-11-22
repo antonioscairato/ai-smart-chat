@@ -266,7 +266,7 @@ class SAIC_Admin {
 						self::input(
 							'reasoning_effort',
 							'text',
-							'small-text',
+							'medium-text',
 							array(
 								'list'        => 'saic-effort',
 								'placeholder' => 'low',
