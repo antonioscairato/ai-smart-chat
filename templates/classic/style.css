@@ -1,0 +1,48 @@
+/* Template Clássico — claro, cabeçalho colorido, balões. */
+.saic--classic {
+	--saic-bg: #fff;
+	--saic-border: #e2e5ea;
+	--saic-bot-bg: #fff;
+	--saic-radius: 16px;
+}
+.saic--classic .saic-panel {
+	border: 1px solid var(--saic-border);
+	background: #eef1f5;
+}
+.saic--classic .saic-header {
+	padding: 12px 14px;
+	background: var(--saic-primary);
+	color: #fff;
+}
+.saic--classic .saic-messages {
+	padding: 14px;
+}
+.saic--classic .saic-msg--bot .saic-bubble {
+	border-bottom-left-radius: 4px;
+	border: 1px solid var(--saic-border);
+}
+.saic--classic .saic-msg--user .saic-bubble {
+	border-bottom-right-radius: 4px;
+}
+.saic--classic .saic-suggestions {
+	padding: 0 14px 10px;
+}
+.saic--classic .saic-chip {
+	background: #fff;
+}
+.saic--classic .saic-form {
+	padding: 10px 12px;
+	border-top: 1px solid var(--saic-border);
+	background: #fff;
+}
+.saic--classic .saic-input {
+	border-radius: 20px;
+	background: #f6f7f9;
+}
+.saic--classic .saic-send {
+	border-radius: 50%;
+}
+.saic--classic .saic-disclaimer {
+	padding: 4px 12px 8px;
+	background: #fff;
+}

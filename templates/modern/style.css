@@ -1,0 +1,103 @@
+/* Template Moderno — escuro, vidro, gradiente. */
+.saic--modern {
+	--saic-bg: #0f1220;
+	--saic-fg: #e8eaf2;
+	--saic-muted: #8b91a8;
+	--saic-border: rgba(255, 255, 255, 0.12);
+	--saic-bot-bg: rgba(255, 255, 255, 0.07);
+	--saic-bot-fg: #e8eaf2;
+	--saic-radius: 18px;
+}
+.saic--modern .saic-panel {
+	border: 1px solid var(--saic-border);
+	background:
+		radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--saic-primary) 28%, transparent), transparent 60%),
+		var(--saic-bg);
+	backdrop-filter: blur(14px);
+}
+.saic--modern .saic-header {
+	padding: 14px 14px 10px;
+}
+.saic--modern .saic-header__text {
+	flex: 1;
+	min-width: 0;
+}
+.saic--modern .saic-header__sub {
+	display: block;
+	color: var(--saic-muted);
+	font-size: 0.75rem;
+}
+.saic--modern .saic-avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	width: 36px;
+	height: 36px;
+	border-radius: 12px;
+	background: linear-gradient(135deg, var(--saic-primary), #a855f7);
+	color: #fff;
+}
+.saic--modern .saic-avatar svg {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
+}
+.saic--modern .saic-messages {
+	padding: 6px 14px 12px;
+}
+.saic--modern .saic-msg--user .saic-bubble {
+	background: linear-gradient(135deg, var(--saic-primary), #7c3aed);
+}
+.saic--modern .saic-msg--bot .saic-bubble {
+	border: 1px solid var(--saic-border);
+}
+.saic--modern .saic-msg--error .saic-bubble {
+	background: rgba(239, 68, 68, 0.15);
+	color: #fecaca;
+}
+.saic--modern .saic-suggestions {
+	padding: 0 14px 10px;
+}
+.saic--modern .saic-chip {
+	background: rgba(255, 255, 255, 0.05);
+}
+.saic--modern .saic-chip:hover,
+.saic--modern .saic-chip:focus-visible {
+	background: rgba(255, 255, 255, 0.12);
+	color: #fff;
+	border-color: rgba(255, 255, 255, 0.3);
+}
+.saic--modern .saic-form {
+	margin: 0 12px 8px;
+	padding: 6px 6px 6px 14px;
+	border: 1px solid var(--saic-border);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+}
+.saic--modern .saic-input {
+	padding: 8px 0;
+	border: 0;
+	border-radius: 0;
+}
+.saic--modern .saic-input:focus {
+	outline: 0;
+}
+.saic--modern .saic-form:focus-within {
+	border-color: var(--saic-primary);
+}
+.saic--modern .saic-send {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, var(--saic-primary), #7c3aed);
+}
+.saic--modern .saic-disclaimer {
+	padding: 0 14px 10px;
+}
+.saic--modern .saic-sources a {
+	color: #93b4ff;
+}
+.saic--modern .saic-launcher {
+	background: linear-gradient(135deg, var(--saic-primary), #7c3aed);
+}

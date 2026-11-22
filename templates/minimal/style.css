@@ -1,0 +1,131 @@
+/* Template Minimalista — linhas finas, monocromático, sem sombras. */
+.saic--minimal {
+	--saic-bg: #fff;
+	--saic-fg: #111;
+	--saic-muted: #777;
+	--saic-border: #111;
+	--saic-user-bg: transparent;
+	--saic-user-fg: #111;
+	--saic-bot-bg: transparent;
+	--saic-radius: 0;
+}
+.saic--minimal .saic-panel {
+	border: 1px solid #111;
+	box-shadow: none;
+}
+.saic--minimal.saic--floating .saic-panel {
+	box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.12);
+}
+.saic--minimal .saic-header {
+	padding: 10px 14px;
+	border-bottom: 1px solid #111;
+}
+.saic--minimal .saic-header__title {
+	font-size: 0.8rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+.saic--minimal .saic-text-btn {
+	padding: 2px 6px;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	font-size: 0.8rem;
+	cursor: pointer;
+	text-decoration: underline;
+}
+.saic--minimal .saic-text-btn:hover,
+.saic--minimal .saic-text-btn:focus-visible {
+	background: #111;
+	color: #fff;
+	text-decoration: none;
+}
+.saic--minimal .saic-messages {
+	gap: 16px;
+	padding: 16px 14px;
+}
+.saic--minimal .saic-msg {
+	max-width: 100%;
+	align-self: stretch;
+	align-items: stretch;
+}
+.saic--minimal .saic-bubble {
+	padding: 0;
+}
+.saic--minimal .saic-msg--user .saic-bubble {
+	padding: 0 0 0 12px;
+	border-left: 2px solid #111;
+	font-weight: 600;
+}
+.saic--minimal .saic-msg--bot .saic-bubble {
+	padding: 0;
+}
+.saic--minimal .saic-msg--error .saic-bubble {
+	background: none;
+	color: #b00020;
+}
+.saic--minimal .saic-cite,
+.saic--minimal .saic-sources__n {
+	border-radius: 0;
+	background: #111;
+}
+.saic--minimal .saic-sources a {
+	color: #111;
+}
+.saic--minimal .saic-sources__title {
+	text-decoration: underline;
+}
+.saic--minimal .saic-suggestions {
+	padding: 0 14px 12px;
+}
+.saic--minimal .saic-chip {
+	border-radius: 0;
+	border-color: #111;
+	color: #111;
+}
+.saic--minimal .saic-chip:hover,
+.saic--minimal .saic-chip:focus-visible {
+	background: #111;
+	color: #fff;
+}
+.saic--minimal .saic-form {
+	padding: 10px 14px;
+	border-top: 1px solid #111;
+}
+.saic--minimal .saic-input {
+	padding: 8px 0;
+	border: 0;
+	border-radius: 0;
+}
+.saic--minimal .saic-input:focus {
+	outline: 0;
+	box-shadow: 0 1px 0 #111;
+}
+.saic--minimal .saic-send--text {
+	width: auto;
+	height: auto;
+	padding: 8px 14px;
+	border: 1px solid #111;
+	border-radius: 0;
+	background: #111;
+	color: #fff;
+	font: inherit;
+	font-size: 0.85rem;
+}
+.saic--minimal .saic-send--text:hover:not(:disabled) {
+	background: #fff;
+	color: #111;
+}
+.saic--minimal .saic-disclaimer {
+	padding: 0 14px 10px;
+	text-align: left;
+}
+.saic--minimal .saic-launcher {
+	height: 44px;
+	border: 1px solid #111;
+	border-radius: 0;
+	background: #fff;
+	color: #111;
+	box-shadow: 4px 4px 0 #111;
+}

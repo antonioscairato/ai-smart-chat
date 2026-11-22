@@ -1,0 +1,9 @@
+/vendor/
+/node_modules/
+/.phpcs.cache
+*.zip
+.DS_Store
+.idea/
+.vscode/
+.env
+wp-config.php
