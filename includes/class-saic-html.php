@@ -2,7 +2,7 @@
 /**
  * HTML text extraction by CSS selector.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -28,10 +28,10 @@ class SAIC_HTML {
 		$url    = SAIC_Sources::resolve_url( $url );
 		$scheme = strtolower( (string) wp_parse_url( $url, PHP_URL_SCHEME ) );
 		if ( 'http' !== $scheme && 'https' !== $scheme ) {
-			return new WP_Error( 'saic_url', __( 'Invalid page URL.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_url', __( 'Invalid page URL.', 'scairato-ai-content-chat' ) );
 		}
 		if ( ! self::host_allowed( $url ) ) {
-			return new WP_Error( 'saic_host', __( 'The page must be on this site.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_host', __( 'The page must be on this site.', 'scairato-ai-content-chat' ) );
 		}
 
 		/**
@@ -44,7 +44,7 @@ class SAIC_HTML {
 				'redirection'         => 3,
 				'sslverify'           => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- core filter. // Mesmo padrão das requisições de loopback do WordPress.
 				'limit_response_size' => 2 * 1024 * 1024,
-				'user-agent'          => 'AI Smart Chat/' . SAIC_VERSION,
+				'user-agent'          => 'Scairato AI Content Chat/' . SAIC_VERSION,
 				'headers'             => array( 'Accept' => 'text/html' ),
 			),
 			$url
@@ -71,7 +71,7 @@ class SAIC_HTML {
 			$next   = class_exists( 'WP_Http' ) && method_exists( 'WP_Http', 'make_absolute_url' ) ? WP_Http::make_absolute_url( $location, $target ) : $location;
 			$scheme = strtolower( (string) wp_parse_url( $next, PHP_URL_SCHEME ) );
 			if ( ( 'http' !== $scheme && 'https' !== $scheme ) || ! self::host_allowed( $next ) ) {
-				return new WP_Error( 'saic_host', __( 'The page must be on this site.', 'ai-smart-chat' ) );
+				return new WP_Error( 'saic_host', __( 'The page must be on this site.', 'scairato-ai-content-chat' ) );
 			}
 			$target = $next;
 		}
@@ -79,7 +79,7 @@ class SAIC_HTML {
 		$code = (int) wp_remote_retrieve_response_code( $response );
 		if ( 200 !== $code ) {
 			/* translators: %d: HTTP status code */
-			return new WP_Error( 'saic_http', sprintf( __( 'The page returned HTTP %d.', 'ai-smart-chat' ), $code ) );
+			return new WP_Error( 'saic_http', sprintf( __( 'The page returned HTTP %d.', 'scairato-ai-content-chat' ), $code ) );
 		}
 		return (string) wp_remote_retrieve_body( $response );
 	}
@@ -104,7 +104,7 @@ class SAIC_HTML {
 	 */
 	public static function extract( $html, $selector ) {
 		if ( ! class_exists( 'DOMDocument' ) ) {
-			return new WP_Error( 'saic_no_dom', __( 'The PHP DOM extension is required to read HTML pages.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_no_dom', __( 'The PHP DOM extension is required to read HTML pages.', 'scairato-ai-content-chat' ) );
 		}
 		$expr = self::css_to_xpath( $selector );
 		if ( is_wp_error( $expr ) ) {
@@ -117,7 +117,7 @@ class SAIC_HTML {
 		libxml_clear_errors();
 		libxml_use_internal_errors( $previous );
 		if ( ! $loaded ) {
-			return new WP_Error( 'saic_parse', __( 'Could not parse the page HTML.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_parse', __( 'Could not parse the page HTML.', 'scairato-ai-content-chat' ) );
 		}
 
 		$xp = new DOMXPath( $dom );
@@ -134,7 +134,7 @@ class SAIC_HTML {
 
 		$found = @$xp->query( $expr ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
 		if ( false === $found ) {
-			return new WP_Error( 'saic_selector', __( 'Invalid selector.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_selector', __( 'Invalid selector.', 'scairato-ai-content-chat' ) );
 		}
 
 		$list = array();
@@ -223,13 +223,13 @@ class SAIC_HTML {
 	public static function css_to_xpath( $selector ) {
 		$selector = trim( (string) $selector );
 		if ( '' === $selector ) {
-			return new WP_Error( 'saic_selector', __( 'Enter a CSS selector.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_selector', __( 'Enter a CSS selector.', 'scairato-ai-content-chat' ) );
 		}
 		$paths = array();
 		foreach ( self::split_top( $selector ) as $alt ) {
 			$alt = trim( $alt );
 			if ( '' === $alt ) {
-				return new WP_Error( 'saic_selector', __( 'Invalid selector.', 'ai-smart-chat' ) );
+				return new WP_Error( 'saic_selector', __( 'Invalid selector.', 'scairato-ai-content-chat' ) );
 			}
 			$x = self::compile_complex( $alt );
 			if ( is_wp_error( $x ) ) {
@@ -271,7 +271,7 @@ class SAIC_HTML {
 	}
 
 	protected static function unsupported() {
-		return new WP_Error( 'saic_selector', __( 'Unsupported selector. Use tags, #id, .class, [attribute], spaces and ">".', 'ai-smart-chat' ) );
+		return new WP_Error( 'saic_selector', __( 'Unsupported selector. Use tags, #id, .class, [attribute], spaces and ">".', 'scairato-ai-content-chat' ) );
 	}
 
 	protected static function compile_complex( $s ) {

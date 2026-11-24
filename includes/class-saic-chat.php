@@ -2,7 +2,7 @@
 /**
  * RAG pipeline: retrieval, context building and answer.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -125,7 +125,7 @@ class SAIC_Chat {
 			}
 			$plain = true; // A lista já tem os links: não repete o bloco "Fontes".
 			/* translators: 1: number of items, 2: category name(s) */
-			$answer = sprintf( __( '%1$d items found in: %2$s', 'ai-smart-chat' ), count( $sources ), implode( ', ', $scope ) ) . "\n\n" . implode( "\n", $lines );
+			$answer = sprintf( __( '%1$d items found in: %2$s', 'scairato-ai-content-chat' ), count( $sources ), implode( ', ', $scope ) ) . "\n\n" . implode( "\n", $lines );
 		} else {
 			$answer = SAIC_OpenAI::chat( $messages );
 			if ( is_wp_error( $answer ) ) {

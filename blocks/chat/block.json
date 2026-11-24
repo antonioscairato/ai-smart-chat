@@ -1,13 +1,13 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "ai-site-chat/chat",
-	"title": "AI Smart Chat",
+	"name": "saic/chat",
+	"title": "Scairato AI Content Chat",
 	"category": "widgets",
 	"icon": "format-chat",
 	"description": "AI-powered search chatbot based on your site content.",
 	"keywords": ["chat", "ai", "search", "assistant"],
-	"textdomain": "ai-smart-chat",
+	"textdomain": "scairato-ai-content-chat",
 	"supports": {
 		"html": false,
 		"align": ["wide", "full"]

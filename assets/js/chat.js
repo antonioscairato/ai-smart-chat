@@ -1,5 +1,5 @@
 /**
- * AI Smart Chat — front-end.
+ * Scairato AI Content Chat — front-end.
  *
  * O JS se liga ao HTML do template por atributos data-saic-*:
  *   [data-saic]              raiz (gerada pelo plugin)
@@ -16,9 +16,9 @@
  *
  * Extensão:
  *   - Eventos DOM (bubbles) na raiz: saic:ready, saic:question, saic:answer, saic:error
- *   - window.AISiteChat.filters.beforeRequest(payload) -> payload
- *   - window.AISiteChat.filters.renderAnswer(html, data) -> html
- *   - window.AISiteChat.open(id?) / close(id?) / ask(texto, id?) / init(el)
+ *   - window.SAICChat.filters.beforeRequest(payload) -> payload
+ *   - window.SAICChat.filters.renderAnswer(html, data) -> html
+ *   - window.SAICChat.open(id?) / close(id?) / ask(texto, id?) / init(el)
  */
 ( function () {
 	'use strict';
@@ -26,7 +26,7 @@
 	var CFG = window.SAIC_CONFIG || {};
 	var I18N = CFG.i18n || {};
 
-	var API = ( window.AISiteChat = window.AISiteChat || {} );
+	var API = ( window.SAICChat = window.SAICChat || {} );
 	API.instances = API.instances || {};
 	API.filters = API.filters || {};
 

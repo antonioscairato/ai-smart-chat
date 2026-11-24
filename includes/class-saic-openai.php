@@ -2,7 +2,7 @@
 /**
  * OpenAI-compatible API client.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -18,7 +18,7 @@ class SAIC_OpenAI {
 	public static function request( $path, array $body, $timeout = 60 ) {
 		$key = SAIC_Settings::api_key();
 		if ( '' === $key ) {
-			return new WP_Error( 'saic_no_key', __( 'API key not set.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_no_key', __( 'API key not set.', 'scairato-ai-content-chat' ) );
 		}
 
 		$url      = rtrim( SAIC_Settings::get( 'base_url' ), '/' ) . $path;
@@ -46,7 +46,7 @@ class SAIC_OpenAI {
 			return new WP_Error( 'saic_api_error', $msg, array( 'status' => $code ) );
 		}
 		if ( ! is_array( $data ) ) {
-			return new WP_Error( 'saic_bad_response', __( 'Invalid API response.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_bad_response', __( 'Invalid API response.', 'scairato-ai-content-chat' ) );
 		}
 		return $data;
 	}
@@ -76,7 +76,7 @@ class SAIC_OpenAI {
 				return $data;
 			}
 			if ( empty( $data['data'] ) ) {
-				return new WP_Error( 'saic_bad_response', __( 'The API did not return embeddings.', 'ai-smart-chat' ) );
+				return new WP_Error( 'saic_bad_response', __( 'The API did not return embeddings.', 'scairato-ai-content-chat' ) );
 			}
 			$rows = $data['data'];
 			usort(
@@ -109,7 +109,7 @@ class SAIC_OpenAI {
 		}
 		return new WP_Error(
 			$error->get_error_code(),
-			$error->get_error_message() . ' — ' . __( 'Hint: the model rejected a request parameter. Leave "Temperature" empty for reasoning models and check "Reasoning effort" and "Max output tokens" in the settings.', 'ai-smart-chat' ),
+			$error->get_error_message() . ' — ' . __( 'Hint: the model rejected a request parameter. Leave "Temperature" empty for reasoning models and check "Reasoning effort" and "Max output tokens" in the settings.', 'scairato-ai-content-chat' ),
 			$data
 		);
 	}
@@ -160,7 +160,7 @@ class SAIC_OpenAI {
 			return self::explain( $data );
 		}
 		if ( empty( $data['choices'][0]['message']['content'] ) ) {
-			return new WP_Error( 'saic_empty', __( 'The API returned an empty response.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_empty', __( 'The API returned an empty response.', 'scairato-ai-content-chat' ) );
 		}
 		return trim( $data['choices'][0]['message']['content'] );
 	}

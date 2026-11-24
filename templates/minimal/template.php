@@ -5,9 +5,9 @@
  * Variável disponível: $saic (id, mode, position, title, placeholder, welcome,
  * launcher_label, disclaimer, suggestions[], height, color, class).
  *
- * Para customizar: copie esta pasta para wp-content/themes/SEU-TEMA/ai-smart-chat/minimal/
+ * Para customizar: copie esta pasta para wp-content/themes/SEU-TEMA/scairato-ai-content-chat/minimal/
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -26,9 +26,9 @@ $saic_panel_id = $saic['id'] . '-panel';
 
 	<header class="saic-header">
 		<h3 class="saic-header__title"><?php echo esc_html( $saic['title'] ); ?></h3>
-		<button type="button" class="saic-text-btn" data-saic-reset><?php esc_html_e( 'Clear', 'ai-smart-chat' ); ?></button>
+		<button type="button" class="saic-text-btn" data-saic-reset><?php esc_html_e( 'Clear', 'scairato-ai-content-chat' ); ?></button>
 		<?php if ( $saic_floating ) : ?>
-			<button type="button" class="saic-text-btn" data-saic-close aria-label="<?php esc_attr_e( 'Close chat', 'ai-smart-chat' ); ?>">&times;</button>
+			<button type="button" class="saic-text-btn" data-saic-close aria-label="<?php esc_attr_e( 'Close chat', 'scairato-ai-content-chat' ); ?>">&times;</button>
 		<?php endif; ?>
 	</header>
 
@@ -45,7 +45,7 @@ $saic_panel_id = $saic['id'] . '-panel';
 	<form class="saic-form" data-saic-form>
 		<label class="screen-reader-text" for="<?php echo esc_attr( $saic['id'] ); ?>-input" style="position:absolute;left:-9999px"><?php echo esc_html( $saic['placeholder'] ); ?></label>
 		<textarea class="saic-input" id="<?php echo esc_attr( $saic['id'] ); ?>-input" data-saic-input rows="1" placeholder="<?php echo esc_attr( $saic['placeholder'] ); ?>" autocomplete="off"></textarea>
-		<button type="submit" class="saic-send saic-send--text" data-saic-send><?php esc_html_e( 'Send', 'ai-smart-chat' ); ?></button>
+		<button type="submit" class="saic-send saic-send--text" data-saic-send><?php esc_html_e( 'Send', 'scairato-ai-content-chat' ); ?></button>
 	</form>
 
 	<?php if ( $saic['disclaimer'] ) : ?>

@@ -1,23 +1,22 @@
 <?php
 /**
- * Plugin Name:       AI Smart Chat
+ * Plugin Name:       Scairato AI Content Chat
  * Description:       AI-powered search chatbot (RAG) for your site: answers visitors' questions from your published content and cites the sources.
- * Version:           1.3.5
- * Author: Antonio Scairato
+ * Version:           1.3.6
+ * Author: Antonio A. Thiers Scairato
  * Author URI: https://github.com/antonioscairato
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       ai-smart-chat
- * Domain Path:       /languages
+ * Text Domain:       scairato-ai-content-chat
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SAIC_VERSION', '1.3.5' );
+define( 'SAIC_VERSION', '1.3.6' );
 define( 'SAIC_FILE', __FILE__ );
 define( 'SAIC_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SAIC_URL', plugin_dir_url( __FILE__ ) );

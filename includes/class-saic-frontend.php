@@ -2,7 +2,7 @@
 /**
  * Front-end rendering, shortcode and floating launcher.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * Templates: cada template é uma pasta com `template.php` e `style.css`.
  * Para customizar sem editar o plugin, copie a pasta para
- *   wp-content/themes/SEU-TEMA/ai-smart-chat/<slug>/
+ *   wp-content/themes/SEU-TEMA/scairato-ai-content-chat/<slug>/
  * e edite à vontade (HTML/CSS). O JS se liga por atributos data-saic-*.
  * Novos templates podem ser registrados com o filtro 'saic_templates'.
  */
@@ -23,8 +23,7 @@ class SAIC_Frontend {
 	protected static $queue          = array(); // HTML de shortcodes flutuantes, impresso no rodapé.
 
 	public static function init() {
-		add_shortcode( 'ai_site_chat', array( __CLASS__, 'shortcode' ) );
-		add_shortcode( 'ai_smart_chat', array( __CLASS__, 'shortcode' ) );
+		add_shortcode( 'saic_chat', array( __CLASS__, 'shortcode' ) );
 		// Assets do lançador entram na fila antes de wp_head/wp_footer imprimirem as filas.
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_floating' ) );
 		// Prioridade < 20: o HTML sai antes de o core imprimir os scripts do rodapé.
@@ -36,9 +35,9 @@ class SAIC_Frontend {
 	/** @return array slug => [label, path, url, source] */
 	public static function templates() {
 		$base      = array(
-			'classic' => __( 'Classic (bubbles, light)', 'ai-smart-chat' ),
-			'modern'  => __( 'Modern (dark, glass)', 'ai-smart-chat' ),
-			'minimal' => __( 'Minimal (lines, monochrome)', 'ai-smart-chat' ),
+			'classic' => __( 'Classic (bubbles, light)', 'scairato-ai-content-chat' ),
+			'modern'  => __( 'Modern (dark, glass)', 'scairato-ai-content-chat' ),
+			'minimal' => __( 'Minimal (lines, monochrome)', 'scairato-ai-content-chat' ),
 		);
 		$templates = array();
 		foreach ( $base as $slug => $label ) {
@@ -58,10 +57,10 @@ class SAIC_Frontend {
 		// Sobrescritas no tema (filho tem prioridade).
 		foreach ( $templates as $slug => $t ) {
 			foreach ( array( array( get_stylesheet_directory(), get_stylesheet_directory_uri() ), array( get_template_directory(), get_template_directory_uri() ) ) as $dir ) {
-				$path = trailingslashit( $dir[0] ) . 'ai-smart-chat/' . $slug . '/';
+				$path = trailingslashit( $dir[0] ) . 'scairato-ai-content-chat/' . $slug . '/';
 				if ( file_exists( $path . 'template.php' ) ) {
 					$templates[ $slug ]['path'] = $path;
-					$templates[ $slug ]['url']  = trailingslashit( $dir[1] ) . 'ai-smart-chat/' . $slug . '/';
+					$templates[ $slug ]['url']  = trailingslashit( $dir[1] ) . 'scairato-ai-content-chat/' . $slug . '/';
 					break;
 				}
 			}
@@ -85,26 +84,17 @@ class SAIC_Frontend {
 			$config = array(
 				'restUrl'   => esc_url_raw( rest_url( 'saic/v1/ask' ) ),
 				'i18n'      => array(
-					'error'    => __( 'Something went wrong. Please try again.', 'ai-smart-chat' ),
-					'sources'  => __( 'Sources', 'ai-smart-chat' ),
-					'thinking' => __( 'Thinking…', 'ai-smart-chat' ),
-					'open'     => __( 'Open chat', 'ai-smart-chat' ),
-					'close'    => __( 'Close chat', 'ai-smart-chat' ),
-					'newChat'  => __( 'New conversation', 'ai-smart-chat' ),
+					'error'    => __( 'Something went wrong. Please try again.', 'scairato-ai-content-chat' ),
+					'sources'  => __( 'Sources', 'scairato-ai-content-chat' ),
+					'thinking' => __( 'Thinking…', 'scairato-ai-content-chat' ),
+					'open'     => __( 'Open chat', 'scairato-ai-content-chat' ),
+					'close'    => __( 'Close chat', 'scairato-ai-content-chat' ),
+					'newChat'  => __( 'New conversation', 'scairato-ai-content-chat' ),
 				),
 				'maxLength' => (int) SAIC_Settings::get( 'max_question_length' ),
 				'history'   => (int) SAIC_Settings::get( 'history_messages' ),
 			);
 			wp_add_inline_script( 'saic-chat', 'window.SAIC_CONFIG = ' . wp_json_encode( $config ) . ';', 'before' );
-
-			$css = trim( (string) SAIC_Settings::get( 'custom_css' ) );
-			if ( $css ) {
-				wp_add_inline_style( 'saic-base', $css );
-			}
-			$js = trim( (string) SAIC_Settings::get( 'custom_js' ) );
-			if ( $js ) {
-				wp_add_inline_script( 'saic-chat', $js, 'after' );
-			}
 			self::$assets_ready = true;
 		}
 
@@ -207,7 +197,7 @@ class SAIC_Frontend {
 				'class'          => '',
 			),
 			$atts,
-			'ai_site_chat'
+			'saic_chat'
 		);
 		if ( '' === $atts['template'] ) {
 			unset( $atts['template'] );
@@ -261,7 +251,7 @@ class SAIC_Frontend {
 
 	/** Lançador flutuante global (configurável em Configurações > Interface). */
 	public static function floating() {
-		// Shortcodes [ai_site_chat mode="floating"] da página têm prioridade sobre o lançador global.
+		// Shortcodes [saic_chat mode="floating"] da página têm prioridade sobre o lançador global.
 		if ( self::$queue ) {
 			echo implode( '', self::$queue ); // phpcs:ignore WordPress.Security.EscapeOutput -- escapado no render().
 			self::$queue = array();

@@ -2,7 +2,7 @@
 /**
  * Turns posts into indexable text and chunks.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -21,7 +21,7 @@ class SAIC_Chunker {
 		$obj   = get_post_type_object( $post->post_type );
 		if ( $obj ) {
 			/* translators: %s: content type name (for example, Product) */
-			$lines[] = sprintf( __( 'Type: %s', 'ai-smart-chat' ), $obj->labels->singular_name );
+			$lines[] = sprintf( __( 'Type: %s', 'scairato-ai-content-chat' ), $obj->labels->singular_name );
 		}
 		foreach ( get_object_taxonomies( $post->post_type, 'objects' ) as $tax ) {
 			if ( ! $tax->public ) {
@@ -131,9 +131,9 @@ class SAIC_Chunker {
 		$price = $product->get_price();
 		if ( '' !== $price ) {
 			/* translators: %s: product price */
-			$lines[] = sprintf( __( 'Price: %s', 'ai-smart-chat' ), wp_strip_all_tags( html_entity_decode( wc_price( $price ) ) ) );
+			$lines[] = sprintf( __( 'Price: %s', 'scairato-ai-content-chat' ), wp_strip_all_tags( html_entity_decode( wc_price( $price ) ) ) );
 		}
-		$lines[] = $product->is_in_stock() ? __( 'Availability: in stock', 'ai-smart-chat' ) : __( 'Availability: out of stock', 'ai-smart-chat' );
+		$lines[] = $product->is_in_stock() ? __( 'Availability: in stock', 'scairato-ai-content-chat' ) : __( 'Availability: out of stock', 'scairato-ai-content-chat' );
 		foreach ( $product->get_attributes() as $attr ) {
 			if ( is_object( $attr ) && method_exists( $attr, 'get_name' ) ) {
 				$name = wc_attribute_label( $attr->get_name() );

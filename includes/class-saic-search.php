@@ -2,7 +2,7 @@
 /**
  * Semantic search and list-question helpers.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;

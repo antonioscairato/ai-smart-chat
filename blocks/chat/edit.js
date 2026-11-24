@@ -13,7 +13,7 @@
 	var templates = ( window.SAIC_BLOCK && window.SAIC_BLOCK.templates ) || [];
 	var options = [ { value: '', label: T.defaultFromSettings || '' } ].concat( templates );
 
-	wp.blocks.registerBlockType( 'ai-site-chat/chat', {
+	wp.blocks.registerBlockType( 'saic/chat', {
 		edit: function ( props ) {
 			var a = props.attributes;
 			var set = props.setAttributes;
@@ -58,7 +58,7 @@
 				),
 				el( Placeholder, {
 					icon: 'format-chat',
-					label: 'AI Smart Chat',
+					label: 'Scairato AI Content Chat',
 					instructions: T.help
 				}, el( 'code', null, ( a.template || T.defaultTemplate ) + ' · ' + ( a.height || '520px' ) ) )
 			);

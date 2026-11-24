@@ -2,13 +2,13 @@
 /**
  * Gutenberg block registration.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Bloco Gutenberg "AI Smart Chat" (renderização no servidor, sem etapa de build).
+ * Bloco Gutenberg "Scairato AI Content Chat" (renderização no servidor, sem etapa de build).
  */
 class SAIC_Block {
 
@@ -38,14 +38,14 @@ class SAIC_Block {
 				array(
 					'templates' => $templates,
 					'i18n'      => array(
-						'defaultFromSettings' => __( 'Default from settings', 'ai-smart-chat' ),
-						'template'            => __( 'Template', 'ai-smart-chat' ),
-						'title'               => __( 'Title', 'ai-smart-chat' ),
-						'placeholder'         => __( 'Field placeholder', 'ai-smart-chat' ),
-						'welcome'             => __( 'Welcome message', 'ai-smart-chat' ),
-						'height'              => __( 'Height (e.g. 520px, 70vh)', 'ai-smart-chat' ),
-						'help'                => __( 'The chat appears here on the published site. Adjust template, title and height in the sidebar.', 'ai-smart-chat' ),
-						'defaultTemplate'     => __( 'default template', 'ai-smart-chat' ),
+						'defaultFromSettings' => __( 'Default from settings', 'scairato-ai-content-chat' ),
+						'template'            => __( 'Template', 'scairato-ai-content-chat' ),
+						'title'               => __( 'Title', 'scairato-ai-content-chat' ),
+						'placeholder'         => __( 'Field placeholder', 'scairato-ai-content-chat' ),
+						'welcome'             => __( 'Welcome message', 'scairato-ai-content-chat' ),
+						'height'              => __( 'Height (e.g. 520px, 70vh)', 'scairato-ai-content-chat' ),
+						'help'                => __( 'The chat appears here on the published site. Adjust template, title and height in the sidebar.', 'scairato-ai-content-chat' ),
+						'defaultTemplate'     => __( 'default template', 'scairato-ai-content-chat' ),
 					),
 				)
 			) . ';',

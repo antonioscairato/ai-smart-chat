@@ -2,7 +2,7 @@
 /**
  * Extra sources: fixed text, options and page excerpts.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -184,19 +184,19 @@ class SAIC_Sources {
 			$issue = self::inspect_option( $key )['issue'];
 			if ( 'selector' === $issue ) {
 				/* translators: %s: option name typed by the user */
-				$out[] = sprintf( __( 'The option "%s" looks like a CSS selector. Use a "Text from a page" source for that.', 'ai-smart-chat' ), $key );
+				$out[] = sprintf( __( 'The option "%s" looks like a CSS selector. Use a "Text from a page" source for that.', 'scairato-ai-content-chat' ), $key );
 			} elseif ( 'blocked' === $issue ) {
 				/* translators: %s: option name typed by the user */
-				$out[] = sprintf( __( 'The option "%s" was skipped because its name looks like a secret.', 'ai-smart-chat' ), $key );
+				$out[] = sprintf( __( 'The option "%s" was skipped because its name looks like a secret.', 'scairato-ai-content-chat' ), $key );
 			} elseif ( 'missing' === $issue ) {
 				/* translators: %s: option name typed by the user */
-				$out[] = sprintf( __( 'The option "%s" was not found.', 'ai-smart-chat' ), $key );
+				$out[] = sprintf( __( 'The option "%s" was not found.', 'scairato-ai-content-chat' ), $key );
 			} elseif ( 'empty' === $issue ) {
 				/* translators: %s: option name typed by the user */
-				$out[] = sprintf( __( 'The option "%s" is empty.', 'ai-smart-chat' ), $key );
+				$out[] = sprintf( __( 'The option "%s" is empty.', 'scairato-ai-content-chat' ), $key );
 			} elseif ( 'type' === $issue ) {
 				/* translators: %s: option name typed by the user */
-				$out[] = sprintf( __( 'The option "%s" does not hold simple text.', 'ai-smart-chat' ), $key );
+				$out[] = sprintf( __( 'The option "%s" does not hold simple text.', 'scairato-ai-content-chat' ), $key );
 			}
 		}
 		return $out;
@@ -223,14 +223,14 @@ class SAIC_Sources {
 
 		if ( $cfg['site_info'] ) {
 			/* translators: %s: site name */
-			$lines[] = sprintf( __( 'Site name: %s', 'ai-smart-chat' ), wp_strip_all_tags( get_bloginfo( 'name' ) ) );
+			$lines[] = sprintf( __( 'Site name: %s', 'scairato-ai-content-chat' ), wp_strip_all_tags( get_bloginfo( 'name' ) ) );
 			$tagline = trim( wp_strip_all_tags( get_bloginfo( 'description' ) ) );
 			if ( '' !== $tagline ) {
 				/* translators: %s: site tagline */
-				$lines[] = sprintf( __( 'Tagline: %s', 'ai-smart-chat' ), $tagline );
+				$lines[] = sprintf( __( 'Tagline: %s', 'scairato-ai-content-chat' ), $tagline );
 			}
 			/* translators: %s: site address (URL) */
-			$lines[] = sprintf( __( 'Website: %s', 'ai-smart-chat' ), home_url( '/' ) );
+			$lines[] = sprintf( __( 'Website: %s', 'scairato-ai-content-chat' ), home_url( '/' ) );
 		}
 
 		foreach ( self::option_list() as $key ) {
@@ -244,7 +244,7 @@ class SAIC_Sources {
 			return null;
 		}
 		return array(
-			'title' => __( 'Site information', 'ai-smart-chat' ),
+			'title' => __( 'Site information', 'scairato-ai-content-chat' ),
 			'url'   => home_url( '/' ),
 			'text'  => implode( "\n", $lines ),
 			'error' => null,
@@ -263,7 +263,7 @@ class SAIC_Sources {
 
 		foreach ( (array) $cfg['items'] as $item ) {
 			$key   = ( 'html' === $item['type'] ? 'h:' : 't:' ) . $item['id'];
-			$title = '' !== $item['title'] ? $item['title'] : __( 'Site information', 'ai-smart-chat' );
+			$title = '' !== $item['title'] ? $item['title'] : __( 'Site information', 'scairato-ai-content-chat' );
 
 			if ( 'text' === $item['type'] ) {
 				$docs[ $key ] = array(
@@ -292,7 +292,7 @@ class SAIC_Sources {
 				if ( is_wp_error( $text ) ) {
 					$doc['error'] = $text;
 				} elseif ( '' === $text ) {
-					$doc['error'] = new WP_Error( 'saic_empty', __( 'The selector matched nothing on the page.', 'ai-smart-chat' ) );
+					$doc['error'] = new WP_Error( 'saic_empty', __( 'The selector matched nothing on the page.', 'scairato-ai-content-chat' ) );
 				} else {
 					$doc['text'] = $text;
 				}
@@ -318,7 +318,7 @@ class SAIC_Sources {
 			return $text;
 		}
 		if ( '' === $text ) {
-			return new WP_Error( 'saic_empty', __( 'The selector matched nothing on the page.', 'ai-smart-chat' ) );
+			return new WP_Error( 'saic_empty', __( 'The selector matched nothing on the page.', 'scairato-ai-content-chat' ) );
 		}
 		return $text;
 	}
@@ -341,7 +341,7 @@ class SAIC_Sources {
 		);
 
 		if ( '' === SAIC_Settings::api_key() ) {
-			$res['errors'][] = __( 'API key not set.', 'ai-smart-chat' );
+			$res['errors'][] = __( 'API key not set.', 'scairato-ai-content-chat' );
 			return $res;
 		}
 

@@ -2,7 +2,7 @@
 /**
  * REST API endpoint for questions.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -45,11 +45,11 @@ class SAIC_REST {
 		$max      = (int) SAIC_Settings::get( 'max_question_length' );
 
 		if ( '' === $question ) {
-			return new WP_Error( 'saic_empty_question', __( 'Type a question.', 'ai-smart-chat' ), array( 'status' => 400 ) );
+			return new WP_Error( 'saic_empty_question', __( 'Type a question.', 'scairato-ai-content-chat' ), array( 'status' => 400 ) );
 		}
 		if ( mb_strlen( $question ) > $max ) {
 			/* translators: %d: maximum characters */
-			return new WP_Error( 'saic_too_long', sprintf( __( 'The question must be at most %d characters long.', 'ai-smart-chat' ), $max ), array( 'status' => 400 ) );
+			return new WP_Error( 'saic_too_long', sprintf( __( 'The question must be at most %d characters long.', 'scairato-ai-content-chat' ), $max ), array( 'status' => 400 ) );
 		}
 
 		$limited = self::check_limits();
@@ -65,7 +65,7 @@ class SAIC_REST {
 			if ( current_user_can( 'manage_options' ) ) {
 				return new WP_Error( $result->get_error_code(), $result->get_error_message(), array( 'status' => 500 ) );
 			}
-			return new WP_Error( 'saic_unavailable', __( 'The assistant is unavailable right now. Please try again later.', 'ai-smart-chat' ), array( 'status' => 503 ) );
+			return new WP_Error( 'saic_unavailable', __( 'The assistant is unavailable right now. Please try again later.', 'scairato-ai-content-chat' ), array( 'status' => 503 ) );
 		}
 
 		return rest_ensure_response( $result );
@@ -78,7 +78,7 @@ class SAIC_REST {
 			$key   = 'saic_rl_' . SAIC_DB::hash_ip();
 			$count = (int) get_transient( $key );
 			if ( $count >= $per_min ) {
-				return new WP_Error( 'saic_rate_limited', __( 'Too many questions in a short time. Please wait a moment.', 'ai-smart-chat' ), array( 'status' => 429 ) );
+				return new WP_Error( 'saic_rate_limited', __( 'Too many questions in a short time. Please wait a moment.', 'scairato-ai-content-chat' ), array( 'status' => 429 ) );
 			}
 			set_transient( $key, $count + 1, MINUTE_IN_SECONDS );
 		}
@@ -88,7 +88,7 @@ class SAIC_REST {
 			$key   = 'saic_daily_' . gmdate( 'Ymd' );
 			$count = (int) get_transient( $key );
 			if ( $count >= $daily ) {
-				return new WP_Error( 'saic_daily_limit', __( 'The daily question limit has been reached. Come back tomorrow.', 'ai-smart-chat' ), array( 'status' => 429 ) );
+				return new WP_Error( 'saic_daily_limit', __( 'The daily question limit has been reached. Come back tomorrow.', 'scairato-ai-content-chat' ), array( 'status' => 429 ) );
 			}
 			set_transient( $key, $count + 1, DAY_IN_SECONDS );
 		}

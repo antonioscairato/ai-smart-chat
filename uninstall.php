@@ -2,7 +2,7 @@
 /**
  * Remoção completa — só ocorre se "Apagar dados ao excluir o plugin" estiver marcado.
  *
- * @package AI_Smart_Chat
+ * @package Scairato_AI_Content_Chat
  */
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
