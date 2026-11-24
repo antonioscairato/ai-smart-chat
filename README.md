@@ -1,10 +1,10 @@
-# AI Smart Chat
+# Scairato AI Content Chat
 
 An AI-powered search chatbot for WordPress. Visitors ask questions in natural language and get answers written **only from your own content**, with links to the pages the answer came from.
 
 It uses retrieval-augmented generation (RAG): posts, pages, products and other content are split into passages and turned into embeddings; for each question the most relevant passages are retrieved and sent to an OpenAI-compatible chat model.
 
-> WordPress.org listing: https://wordpress.org/plugins/ai-smart-chat/ (available once the plugin is approved)
+> WordPress.org listing: https://wordpress.org/plugins/scairato-ai-content-chat/ (available once the plugin is approved)
 
 ## Features
 
@@ -16,7 +16,7 @@ It uses retrieval-augmented generation (RAG): posts, pages, products and other c
 - **Admin help page** – overview, quick start, shortcode reference and WP-CLI reference inside WordPress.
 - **WP-CLI** – index, search, ask and export history from the terminal.
 - **Privacy and control** – rate limiting, question history with export, API key can live in `wp-config.php`.
-- **Translations** – English, Portuguese (Brazil) and Spanish.
+- **Translation-ready** – strings are translated through translate.wordpress.org; Portuguese (Brazil) and Spanish sources are kept in `i18n/`.
 
 ## Requirements
 
@@ -26,23 +26,21 @@ It uses retrieval-augmented generation (RAG): posts, pages, products and other c
 
 ## Installation
 
-1. Download the latest release and upload the `ai-smart-chat` folder to `wp-content/plugins/` (or install it from the WordPress.org directory).
+1. Download the latest release and upload the `scairato-ai-content-chat` folder to `wp-content/plugins/` (or install it from the WordPress.org directory).
 2. Activate the plugin.
-3. Go to **AI Smart Chat → Settings**, add your API key and choose the content types to index.
-4. Open **AI Smart Chat → Index** and build the index.
-5. Show the chat: enable the floating button in Settings, add the *AI Smart Chat* block, or use the shortcode.
+3. Go to **AI Content Chat → Settings**, add your API key and choose the content types to index.
+4. Open **AI Content Chat → Index** and build the index.
+5. Show the chat: enable the floating button in Settings, add the *Scairato AI Content Chat* block, or use the shortcode.
 
 The **Help** page inside the plugin has the full guide.
 
 ## Usage
 
 ```text
-[ai_smart_chat]
-[ai_smart_chat template="modern" height="480px" title="Talk to us" suggestions="Opening hours?|How to buy?"]
-[ai_smart_chat mode="floating" position="left"]
+[saic_chat]
+[saic_chat template="modern" height="480px" title="Talk to us" suggestions="Opening hours?|How to buy?"]
+[saic_chat mode="floating" position="left"]
 ```
-
-(`[ai_site_chat]` is accepted as an alias.)
 
 | Attribute | Meaning |
 | --- | --- |
@@ -55,7 +53,7 @@ The **Help** page inside the plugin has the full guide.
 | `color` | Primary colour, e.g. `#0a7d5a` |
 | `class` | Extra CSS class |
 
-Custom templates: copy a folder from `templates/` to `your-theme/ai-smart-chat/<name>/` and keep the `data-saic-*` attributes.
+Custom templates: copy a folder from `templates/` to `your-theme/scairato-ai-content-chat/<name>/` and keep the `data-saic-*` attributes.
 
 ## WP-CLI
 
@@ -75,7 +73,7 @@ wp saic history [--limit=50] [--format=table|csv|json]
 
 PHP: `saic_templates`, `saic_template_data`, `saic_system_prompt`, `saic_post_text`, `saic_is_indexable`, `saic_context_chunks`, `saic_retrieval_query`, `saic_response`, `saic_chat_request_body`, `saic_show_floating`, `saic_client_ip`, `saic_search_hits`, `saic_term_expansion`, `saic_answer_not_found`.
 
-JavaScript: `AISiteChat.open()`, `AISiteChat.ask('text')`, `AISiteChat.filters.renderAnswer`, `AISiteChat.filters.beforeRequest`.
+JavaScript: `SAICChat.open()`, `SAICChat.ask('text')`, `SAICChat.filters.renderAnswer`, `SAICChat.filters.beforeRequest`.
 
 REST: `POST /wp-json/saic/v1/ask`.
 
@@ -95,7 +93,7 @@ The repository root is the plugin folder. Files listed in `.distignore` are not 
 
 ## Releasing
 
-1. Bump `Version` in `ai-smart-chat.php`, `SAIC_VERSION` and `Stable tag` in `readme.txt`; add a changelog entry.
+1. Bump `Version` in `scairato-ai-content-chat.php`, `SAIC_VERSION` and `Stable tag` in `readme.txt`; add a changelog entry.
 2. Commit, then publish a GitHub release (tag such as `1.3.6`).
 3. The *Deploy to WordPress.org* workflow pushes the plugin to SVN (requires the `SVN_USERNAME` and `SVN_PASSWORD` repository secrets).
 

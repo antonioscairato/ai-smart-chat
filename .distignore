@@ -1,5 +1,6 @@
 /.git
 /.github
+/i18n
 /.wordpress-org
 /vendor
 /node_modules
